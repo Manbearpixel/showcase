@@ -1,0 +1,43 @@
+<ActionBar class="action-bar">
+  <NavigationButton class="action-bar--button" android.systemIcon="ic_menu_revert" ios:visibility="collapsed" (tap)="onPreviousView()"></NavigationButton>
+  <Label class="action-bar--title" text="Edit Contact"></Label>
+</ActionBar>
+
+<GridLayout class="view" rows="*, 2*">
+  <GridLayout class="header" row="0" rows="55, *" columns="*">
+    <Image col="0" row="1" class="friend two" src="~/app/images/create-account/pg1/circle-bg-odin.png" (tap)="onTapFriendImage()"></Image>
+  </GridLayout>
+
+  <ScrollView class="screen" row="1">
+    <GridLayout class="container" rows="auto, auto, *">
+
+      <ContentView  row="0"
+                    InputField
+                    label="Display Name"
+                    labelSmall="(optional)"
+                    placeholder="John Smith"
+                    returnKeyType="done"
+                    [(ngModel)]="contact.name">
+      </ContentView>
+
+      <ContentView  class="m-b-20"
+                    row="1"
+                    InputField
+                    label="Contact Username"
+                    disabled="true"
+                    allowCopy="true"
+                    [value]="contact.username"
+                    (onCopy)="onContactCopy()">
+      </ContentView>
+
+      <GridLayout row="2"
+                  RoundButton
+                  theme="green"
+                  text="Save Contact"
+                  [busy]="processing"
+                  (tap)="onSaveContact()">
+      </GridLayout>
+    </GridLayout>
+  </ScrollView>
+</GridLayout>
+  

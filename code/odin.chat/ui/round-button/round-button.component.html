@@ -1,0 +1,13 @@
+<GridLayout #roundButtonWrap
+            class="round-button-wrap"
+            [class.busy]="busy"
+            [class.disabled]="disabled"
+
+            rows="auto"
+            horizontalAlignment="center">
+  <StackLayout class="cta cta-bonus">
+    <Button class="shadow"></Button>
+    <Button class="overlay" [text]="text" (tap)="onTap($event)"></Button>
+  </StackLayout>
+  <ActivityIndicator class="activity-indicator" rowSpan="3" [busy]="true" *ngIf="busy"></ActivityIndicator>
+</GridLayout>
